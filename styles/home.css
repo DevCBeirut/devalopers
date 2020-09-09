@@ -1,0 +1,13 @@
+.banner-one {
+    background-image: url('/imgs/banner-one.png');
+}
+
+.banner-one * {
+    color: white;
+}
+
+.banner-one-wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}

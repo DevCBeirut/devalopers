@@ -1,0 +1,5 @@
+/* Use Bootstrap Mixins -------------------- */
+
+.btn-custom {
+  @include button-variant(red, white, red, red);
+}

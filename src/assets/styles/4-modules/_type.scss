@@ -1,0 +1,10 @@
+/* Type -------------------- */
+
+// TEMP:
+.lead > a {
+  text-decoration: underline orange solid;
+
+  &:hover {
+    text-decoration-color: springgreen;
+  }
+}

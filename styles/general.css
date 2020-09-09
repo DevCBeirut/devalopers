@@ -1,0 +1,13 @@
+.site-layout-content {
+    /*background: #fff;*/
+    /*padding: 24px;*/
+    /*min-height: 280px;*/
+}
+
+.light-container {
+    background: #fff;
+}
+
+.dark-container {
+    background: rgba(133, 133, 133, 0.43);
+}

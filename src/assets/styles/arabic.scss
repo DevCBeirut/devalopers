@@ -1,0 +1,43 @@
+.langar {
+direction: rtl;
+}
+
+
+.langar {
+  .text-left, p {
+    text-align: right !important;
+  }
+  label{
+    text-align: right ;
+  }
+  .mostsearchd li {
+    text-align: right;
+  }
+  .landing-first-banner 
+  h1 {
+    text-align: right;
+  }
+  .btnpostajob {
+    margin-left: 3%;
+    margin-right: 0;
+  }
+  .txtsearch {
+    width: 100%;
+    margin-top: 15px;
+    height: 56px;
+  }
+  #searchicon {
+    position: absolute;
+    bottom: 14%;
+    left: 0;
+    z-index: 0000000;
+    img {
+      width: 24px;
+      height: 24px;
+      margin-left: 15px;
+      margin-right: 0;
+  }
+  
+  }
+
+}

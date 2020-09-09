@@ -1,0 +1,23 @@
+//====================================
+// Bootstrap Imports
+//
+// DO NOT MODIFY THE BELOW ORDER!
+// (1 -> 2 -> 3 -> 4)
+//====================================
+
+
+/* 1. Import only the necessary Bootstrap files */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+
+/* 2. Import overrides */
+@import "override-defaults";
+
+/* 3. Import Bootstrap to set the changes */
+@import "~bootstrap/scss/bootstrap";
+
+/* 4. Extend classes & add mixins  */
+@import "extend-classes";
+@import "use-mixins";

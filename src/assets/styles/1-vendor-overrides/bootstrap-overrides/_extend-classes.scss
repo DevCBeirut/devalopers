@@ -1,0 +1,6 @@
+/* Extend Bootstrap Classes with New Classes -------------------- */
+
+.nav-link-different {
+  @extend .nav-link;
+  color: yellow !important;
+}

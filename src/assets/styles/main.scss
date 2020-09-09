@@ -1,0 +1,30 @@
+//====================================
+// Global Imports
+//====================================
+@import "colors";
+@import "fonts";
+
+// 1- Import vendor overrides
+@import '1-vendor-overrides/index';
+
+// 2 - Import plugins
+@import '2-plugins/index';
+
+// 3 - Import base style, custom variables and mixins
+@import '3-base/index';
+
+// 4 - Import modules
+@import '4-modules/index';
+
+// 5 - Import layout styles
+@import '5-layout/index';
+
+
+@import 'desktop';
+
+
+@import 'mobile';
+
+
+@import 'arabic';
+

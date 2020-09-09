@@ -1,0 +1,73 @@
+{
+  "name": "devalopers",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "availity-reactstrap-validation": "^2.6.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "dark-mode-toggle": "^0.7.2",
+    "dotenv": "^8.2.0",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15",
+    "moment-range": "^4.0.2",
+    "node-sass": "^4.13.1",
+    "rc-slider": "^9.2.4",
+    "rc-tooltip": "^4.0.3",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-daterange-picker": "^2.0.1",
+    "react-dom": "^16.12.0",
+    "react-epic-spinners": "^0.4.1",
+    "react-fontawesome": "^1.7.1",
+    "react-loader": "^2.4.7",
+    "react-loading-bar": "0.0.7",
+    "react-localization": "^1.0.15",
+    "react-notifications-component": "^2.4.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-select": "^3.1.0",
+    "react-window": "^1.8.5",
+    "reactstrap": "^8.4.1",
+    "redux": "^4.0.5",
+    "typescript": "^3.8.2",
+    "webpack": "4.41.5"
+  },
+  "scripts": {
+    "prestart": "echo 'Run before `start`'",
+    "start": "react-scripts start",
+    "poststart": "echo 'Run after `start`'",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "update": "ncu -u && npm i"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "jest": "24.9.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0",
+    "shx": "^0.3.2"
+  }
+}

@@ -58,6 +58,7 @@ function EasyToStart() {
 
                 </div>
             </div>
+            <div id="mostsearchedskillssect2"></div>
         </div>
     );
 }

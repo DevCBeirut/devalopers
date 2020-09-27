@@ -23,12 +23,12 @@ function Footer(props) {
                         <h5 className="font-weight-bold">{strings.about}</h5>
 
                         <ul className="list-unstyled">
-                            <li><a href="../#whyussection">{strings.why_us}</a></li>
+                            <li><a href="../#whyussection2">{strings.why_us}</a></li>
 
-                            <li><a href="../#mostsearchedskillssect">{strings.most_searched_skills}</a></li>
-                            <li><a href="../#mostactivecompaniessect">{strings.most_active_companies}</a></li>
+                            <li><a href="../#mostsearchedskillssect2">{strings.most_searched_skills}</a></li>
+                            <li><a href="../#mostactivecompaniessect2">{strings.most_active_companies}</a></li>
 
-                            <li><a href="../#testimonialssect">{strings.testimonials}</a></li>
+                            <li><a href="../#testimonialssect2">{strings.testimonials}</a></li>
                             <li><Link to="/contactus">{strings.contact_us}</Link></li>
                         </ul>
                     </div>

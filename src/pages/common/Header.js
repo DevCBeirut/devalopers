@@ -46,7 +46,7 @@ function Header(props) {
     });
 
 
-    useEffect(() => {
+    useEffect( () => {
         window.scrollTo(0, 0);
     }, [props.location]);
     useEffect(() => {

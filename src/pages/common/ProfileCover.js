@@ -17,17 +17,19 @@ class ProfileCover extends CoreEngine {
         this.state = {
             pictureprofilefile:"",
             pictureprofile:"",
+            remove:false,
         }
         this.engine = new RequestEngine();
     }
     componentWillReceiveProps(nextProps){
-        if(nextProps.cover!==this.props.cover){
+        if(nextProps.cover!==this.props.cover && !this.state.remove){
             this.setState({pictureprofile: nextProps.cover });
         }
     }
 
     handleValidSubmit = async () => {
         this.props.loadingAction(true);
+        debugger
         const iscompany = this.props.iscompany
         try {
             const {pictureprofilefile} =this.state
@@ -36,6 +38,12 @@ class ProfileCover extends CoreEngine {
             const response = await this.engine.postItemData(iscompany?"company":"user",formData,"updatecover")
             if(response && response.status === 200){
                 this.showSucessMessage("Sucess")
+                if(pictureprofilefile.length>2){
+                    this.setState({
+                        remove:false
+                    })
+                }
+
                 this.props.refreshAction(true)
             }
         }catch (e) {
@@ -44,15 +52,15 @@ class ProfileCover extends CoreEngine {
         this.props.loadingAction(false);
     };
     onChangePic(e) {
-        this.setState({pictureprofilefile:e.target.files[0]})
+        this.setState({pictureprofilefile:e.target.files[0],remove:false})
     }
     onChangeProfilePic(e){
-        this.setState({pictureprofile:e},()=>this.handleValidSubmit())
+        this.setState({pictureprofile:e,remove:false},()=>this.handleValidSubmit())
 
 
     }
     removePic(){
-        this.setState({pictureprofile:null},()=>this.handleValidSubmit())
+        this.setState({pictureprofile:"",pictureprofilefile:"",remove:true},()=>this.handleValidSubmit())
     }
     render() {
        let cover= ""

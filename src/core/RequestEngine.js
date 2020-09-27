@@ -209,6 +209,10 @@ import {Memory} from "./Memory";
          return await this.apiEngine.get(link)
      }
 
+     async postFull(link,body) {
+         return await this.apiEngine.post(link,body)
+     }
+
 
 
 

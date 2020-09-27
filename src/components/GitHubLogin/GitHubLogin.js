@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FontAwesome from "react-fontawesome";
 import PopupWindow from './PopupWindow';
 import { toQuery } from './utils';
+import Constants from "../../core/Constants";
 
 class GitHubLogin extends Component {
     static propTypes = {
@@ -31,6 +32,10 @@ class GitHubLogin extends Component {
     }
 
     onBtnClick = () => {
+
+
+        window.location = `https://github.com/login/oauth/authorize?scope=user&client_id=${Constants.REACT_APP_CLIENT_ID}&redirect_uri=${Constants.REACT_APP_REDICRECT_URL}`;
+        return;
         const { clientId, scope, redirectUri, popupHeight, popupWidth} = this.props;
         const search = toQuery({
             client_id: clientId,

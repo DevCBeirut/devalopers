@@ -54,24 +54,46 @@ export class Utilites {
     }
     static debounce(func, wait, immediate) {
         var timeout;
-      
+
         return function executedFunction() {
           var context = this;
           var args = arguments;
-              
+
           var later = function() {
             timeout = null;
             if (!immediate) func.apply(context, args);
           };
-      
+
           var callNow = immediate && !timeout;
-          
+
           clearTimeout(timeout);
-      
+
           timeout = setTimeout(later, wait);
-          
+
           if (callNow) func.apply(context, args);
         };
     };
+
+    static setCookie (cname, cvalue, exdays=99) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    static getCookie  (cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
 
 }

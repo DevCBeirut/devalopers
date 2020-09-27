@@ -166,7 +166,7 @@ class PostAJob extends CoreEngine {
     }
     handleValidSubmit = async () => {
         const { jobtype, whoview,  toduration,
-            fromduration} = this.state
+            fromduration,fileattach} = this.state
         const {edit} = this.props;
 
 
@@ -195,6 +195,9 @@ class PostAJob extends CoreEngine {
         })
         try {
             let data = { ...this.state }
+
+
+            debugger
             let skills = []
 
             let questionlist = []
@@ -224,6 +227,10 @@ class PostAJob extends CoreEngine {
             })
             data.skills = skills;
             data.skillslist = []
+            if(fileattach && fileattach.name){
+                data.realfileattachedname = fileattach.name;
+            }
+
             const response = await this.engine.postItem("job", data, "save")
             if (response && response.status === 200) {
                 const jobinfoid = this.props.match.params.id
@@ -279,7 +286,7 @@ class PostAJob extends CoreEngine {
             acceptremote,
             toduration,
             fromduration,
-            salary, loading, questionlist, whoview, file, education,fullfile ,educationlist} = this.state
+            salary, loading, questionlist, whoview, file, education,fullfile ,educationlist,fileattach} = this.state
         const { edit } = this.props
 
 
@@ -366,7 +373,7 @@ class PostAJob extends CoreEngine {
 
                                             {file && <div className="text-right">
                                                 <a href={fullfile} target="_blank" className="mb-3 btntag searchtag btn-secondary bg-transparent text-primary border-0">
-                                                    attached file
+                                                    {fileattach.name}
                                                 </a>
                                                 <Button color="primary" className="cleanborder mb-3 btntag searchtag btn-secondary bg-transparent text-primary border-0" onClick={() => {
                                                     this.setState({ file: null, fileattach: null });

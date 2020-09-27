@@ -48,7 +48,9 @@ function Statistics({ statistics }) {
                     </div>
                 </div>
             </div>
+            <div id="whyussection2"></div>
         </div>
+
     );
 }
 

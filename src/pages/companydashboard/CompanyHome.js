@@ -7,8 +7,6 @@ import AboutDev from "../common/AboutDev";
 import CompanyBigCover from "./CompanyBigCover";
 import CompanyHeader from "./CompanyHeader";
 
-import { Button } from "reactstrap";
-import logotop from "../../assets/images/logowhite.png";
 import { Link, withRouter } from "react-router-dom";
 import CoreEngine from "../../core/CoreEngine";
 import RequestEngine from "../../core/RequestEngine";

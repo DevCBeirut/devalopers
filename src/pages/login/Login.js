@@ -12,13 +12,13 @@ import { Input } from "reactstrap";
 import CoreEngine from "../../core/CoreEngine";
 import RequestEngine from "../../core/RequestEngine";
 import ButtonLoader from "../../components/ButtonLoader/ButtonLoader";
-import GitHubLogin from '../../components/GitHubLogin';
-import LinkedinLogin from '../../components/LinkedinLogin';
 import Constants from "../../core/Constants";
 import { Memory } from "../../core/Memory";
 import { connect } from "react-redux";
 import redirectAction from "../../core/redux/actions/redirectAction";
 import msgcountAction from "../../core/redux/actions/msgcountAction";
+import FontAwesome from "react-fontawesome";
+import {Utilites} from "../../core/Utilites";
 
 
 
@@ -37,6 +37,95 @@ class Login extends CoreEngine {
         };
 
         this.engine = new RequestEngine();
+
+    }
+
+
+    componentDidMount() {
+
+        if(this.props.location && this.props.location.search){
+            const url = this.props.location.search;
+            const hasCode = url.includes("?code=");
+            const hasState = url.includes("&state=");
+
+            debugger
+            // If Github API returns the code parameter
+            if (hasCode && !hasState) {
+                const newUrl = url.split("?code=");
+                this.socialBackgroundLogin(newUrl[1],true);
+            }
+            if (hasCode && hasState) {
+                const newUrl = url.split("?code=");
+                const code = newUrl[1].split("&state=");
+                const state = url.split("&state=");
+                this.socialBackgroundLogin(code[0],false,code[1]);
+            }
+        }
+    }
+
+
+
+    async socialBackgroundLogin(code,github= true,state=""){
+        const regtype = Utilites.getCookie("regtype")
+        let requestData = {}
+        let proxy_url = "";
+        if(github){
+            proxy_url = Constants.GITHUBLOGIN;
+            requestData = {
+                client_id: Constants.REACT_APP_CLIENT_ID,
+                redirect_uri: Constants.REACT_APP_REDICRECT_URL,
+                client_secret: Constants.REACT_APP_CLIENT_SECRET,
+                code: code,
+                regtype: regtype
+            };
+        }else{
+            proxy_url = Constants.LINKEDLOGIN;
+            requestData = {
+                client_id: Constants.LINK_REACT_APP_CLIENT_ID,
+                redirect_uri: Constants.LINK_REACT_APP_REDICRECT_URL,
+                client_secret: Constants.LINK_REACT_APP_CLIENT_SECRET,
+                code: code,
+                regtype: regtype,
+                state:state
+            };
+        }
+        var engine = new RequestEngine();
+        const response = await engine.postFull(proxy_url,requestData);
+        if (response && response.status === 200) {
+            debugger
+            let redirect = this.props.redirect.location
+            if (response.data.success) {
+
+                if(regtype!="login"){
+                    this.showSucessMessage("Registred , Please login");
+                    return;
+                }
+                const accounttype = response.data.data.accounttype;
+                const token = response.data.data.token;
+                const userid = response.data.data.userid;
+                const picture = response.data.data.picture;
+                const msgcount = response.data.data.msgcount;
+
+                Memory.setItem('accounttype', accounttype);
+                Memory.setItem('token', token);
+                Memory.setItem('userid', userid);
+                Memory.setItem('picture', picture);
+
+                Memory.setItem('isloggedin', true);
+                this.props.msgcountAction(msgcount)
+
+                if (redirect && redirect.length) {
+                    this.props.redirectAction("")
+                    this.goToScreen(redirect);
+                } else {
+                    this.goToScreen((accounttype == "company") ? "/company/home" : "/dev/home");
+                }
+            }else{
+                this.showInlineErrorMessage(response.data.message)
+            }
+
+        }
+
     }
     handleValidSubmit = async () => {
 
@@ -90,17 +179,12 @@ class Login extends CoreEngine {
 
 
 
-    onSuccessGithub(data) {
-        // debugger
-    }
+    requestProfile = () => {
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${Constants.LINK_REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${Constants.LINK_REACT_APP_REDICRECT_URL}`
 
-    onCallbackLinked(data) {
-        // debugger
-    }
+        window.location = oauthUrl;
 
-    onFailureGithub(error) {
-        this.showInlineErrorMessage("login error")
-    }
+    };
 
     showInlineErrorMessage = error => this.setState({ error })
 
@@ -115,6 +199,8 @@ class Login extends CoreEngine {
         if (this.props && this.props.location && this.props.location.state) {
             redirect = this.props.location.state.redirect;
         }
+
+        const githubloginlink = "https://github.com/login/oauth/authorize?scope=user&client_id="+Constants.REACT_APP_CLIENT_ID+"&redirect_uri="+Constants.REACT_APP_REDICRECT_URL;
         return (
             <>
                 <Header />
@@ -171,21 +257,25 @@ class Login extends CoreEngine {
                                             <div className="row mt-3 mb-3 sm-media">
 
                                                 <div className="col-9 col-md-6 text-right mt-2 mx-auto">
-                                                    <LinkedinLogin
-                                                        clientId={Constants.linkedinclientId}
-                                                        callback={this.onCallbackLinked.bind(this)}
-                                                        buttonText="Log In with LinkedIn" />
+
+                                                  <a variant="primary" onClick={this.requestProfile} className="btn btn-sm  btn text-white d-flex" style={{background:"#057ABA"}} >
+                                                    <FontAwesome name="linkedin" /> <span style={{    position: "relative",
+                                                    top: 1,
+                                                    left: 15,
+                                                }}>Log In with Linkedin</span>
+                                                </a>
                                                 </div>
 
                                                 <div className="col-9 col-md-6 text-right mt-2 mx-auto">
 
-                                                    <GitHubLogin clientId={Constants.githubclientId}
-                                                        buttonText="Log In with GitHub"
-                                                        redirectUri=""
-                                                        className="btn btn-sm  btn text-white d-flex" style={{ background: "#444444" }}
-                                                        onSuccess={this.onSuccessGithub.bind(this)}
-                                                        onFailure={this.onFailureGithub.bind(this)}
-                                                    />
+
+                                                    <a variant="primary" onClick={()=>{
+                                                        Utilites.setCookie("regtype","login");
+                                                        window.location=githubloginlink
+                                                    }}     className="btn btn-sm  btn text-white d-flex" style={{background:"#444444"}} ><FontAwesome name="github" /> <span style={{    position: "relative",
+                                                        top: 1,
+                                                        left: 15,
+                                                    }}>Log In with GitHub</span></a>
 
                                                 </div>
 

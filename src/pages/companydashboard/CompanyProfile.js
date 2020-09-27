@@ -223,7 +223,7 @@ class CompanyProfile extends CoreEngine {
                     </div>
 
                     <div className="">
-                        {info && info.website && <p className="text-primary pl-0 ml-0"><a className="mb-1 text-primary" target={"_blank"} href={info && info.website}><FontAwesome name="globe" className="mr-2" size="1x" />{info.website}</a></p>}
+                        {info && info.website && <p className="text-primary pl-0 ml-0"><a className="mb-1 text-primary" target={"_blank"} href={info && info.website && info.website.includes("http")?info.website:"http://"+info.website}><FontAwesome name="globe" className="mr-2" size="1x" />{info.website}</a></p>}
                         {info && info.location && <p className="text-primary"><FontAwesome name="map-marker" className="mr-1" size="1x" />{info && info.location}</p>}
                     </div>
                     <div className="text-primary">

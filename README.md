@@ -10,7 +10,10 @@
 
 Devalopers is an `online platform (Front here) made using react ` that allows `Tech Companies in Globally and especially  in MENA ` to post `jobs and projects` while `Developers, UX/Graphic designers, AI/ML, Tech Project managers and Tech product managers` to find `Remote Jobs and Freelancing projects`.
 
-It will be a `free` platform to post jobs and apply for jobs for all its users
+This repository will create a `free` platform to post jobs and apply for jobs for all its users
+
+## Disclaimer (Important) 
+[Must Read](https://gist.github.com/salahawad/b0aa89e54a1d2b4dd599bc49c0a7c63e)
 
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:

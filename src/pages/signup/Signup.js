@@ -44,17 +44,10 @@ class Signup extends CoreEngine {
         this.engine = new RequestEngine();
     }
 
-    onSuccessGithub(data) {
-        // debugger
+    componentDidMount() {
+        Utilites.setCookie("regtype","company");
     }
 
-    onCallbackLinked(data) {
-        // debugger
-    }
-
-    onFailureGithub(error) {
-        this.showInlineErrorMessage("login error")
-    }
 
     showInlineErrorMessage = error => this.setState({ error })
 
@@ -99,6 +92,12 @@ class Signup extends CoreEngine {
         })
 
     };
+    requestProfile = () => {
+        var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${Constants.LINK_REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${Constants.LINK_REACT_APP_REDICRECT_URL}`
+
+        window.location = oauthUrl;
+
+    };
 
     render() {
         const { loading, name,
@@ -107,6 +106,8 @@ class Signup extends CoreEngine {
             agree,
             password,
             password2 } = this.state
+        const githubloginlink = "https://github.com/login/oauth/authorize?scope=user&client_id="+Constants.REACT_APP_CLIENT_ID+"&redirect_uri="+Constants.REACT_APP_REDICRECT_URL;
+
         return (
             <>
                 <Header />
@@ -156,20 +157,20 @@ class Signup extends CoreEngine {
                                             <div className="row mt-3 mb-3 sm-media">
 
                                                 <div className="col-9 col-md-6 text-right mt-2 mx-auto">
-                                                    <LinkedinLogin
-                                                        clientId={Constants.linkedinclientId}
-                                                        callback={this.onCallbackLinked.bind(this)}
-                                                        buttonText="Sign Up with LinkedIn" />
+                                                    <a variant="primary" onClick={this.requestProfile} className="btn btn-sm  btn text-white d-flex" style={{background:"#057ABA"}} >
+                                                        <FontAwesome name="linkedin" /> <span style={{    position: "relative",
+                                                        top: 1,
+                                                        left: 15,
+                                                    }}>Sign Up with Linkedin</span>
+                                                    </a>
                                                 </div>
 
                                                 <div className="col-9 col-md-6 text-right mt-2 mx-auto">
-                                                    <GitHubLogin clientId={Constants.githubclientId}
-                                                        buttonText="Sign Up with github"
-                                                        redirectUri=""
-                                                        className="btn btn-sm  btn text-white d-flex" style={{ background: "#444444" }}
-                                                        onSuccess={this.onSuccessGithub.bind(this)}
-                                                        onFailure={this.onFailureGithub.bind(this)}
-                                                    />
+
+                                                    <a variant="primary"  href={githubloginlink}    className="btn btn-sm  btn text-white d-flex" style={{background:"#444444"}} ><FontAwesome name="github" /> <span style={{    position: "relative",
+                                                        top: 1,
+                                                        left: 15,
+                                                    }}>Sign Up with github</span></a>
                                                 </div>
 
                                             </div>

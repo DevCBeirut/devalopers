@@ -102,6 +102,7 @@ class Viewapplicantlist extends CoreEngine {
 
            await this.engine.postItem("job/applicant", params, "updatestatus")
 
+            this.callPage();
             //if(response && response.status === 200){
             //  this.showSucessMessage("Updated!")
             // }

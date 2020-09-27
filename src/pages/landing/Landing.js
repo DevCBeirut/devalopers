@@ -176,6 +176,7 @@ class Landing extends Component {
 
 
                     </div>
+                    <div id="mostactivecompaniessect2"></div>
                 </div>
                 <MostActive companylist={companylist} />
 

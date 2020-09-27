@@ -300,7 +300,7 @@ class ViewJobInfo extends CoreEngine {
                                         {info && info.fullfile && <><h5 className="mt-3 greyheader ">Attachment </h5>
                                             <div className="font-weight-bold">
                                                 <a href={info.fullfile} target="_blank" className="mb-3 btntag searchtag btn-secondary bg-transparent text-primary border-0">
-                                                    Download <FontAwesome name="file" size="1x" />
+                                                    {info.realfileattachedname} <FontAwesome name="file" size="1x" />
                                                 </a>
                                             </div></>}
 

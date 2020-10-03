@@ -2,10 +2,23 @@
   "name": "devalopers",
   "version": "1.0.0",
   "description": "Devalopers is a business-oriented web application for all developer and technology workers used to find jobs and projects. This repository represents the Web part (Web-Interface).",
-  "keywords": ["developers","jobs","remote work","jobs platform", "reactjs"],
+  "keywords": [
+    "developers",
+    "jobs",
+    "remote work",
+    "jobs platform",
+    "reactjs"
+  ],
   "homepage": "https://www.devalopers.com/",
-  "author": {"name": "Salah Awad", "email": "salah.awad@outlook.com","url": "https://www.linkedin.com/in/salahelawad/"},
-  "repository": {"type": "git","url": "https://github.com/DevCBeirut/devalopers"},
+  "author": {
+    "name": "Salah Awad",
+    "email": "salah.awad@outlook.com",
+    "url": "https://www.linkedin.com/in/salahelawad/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevCBeirut/devalopers"
+  },
   "license": "bsd-3-clause-clear",
   "dependencies": {
     "availity-reactstrap-validation": "^2.6.1",

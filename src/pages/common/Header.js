@@ -157,14 +157,14 @@ function Header(props) {
                                 {strings.create_an_account}
                             </Link>
 
-                            <Dropdown>
+                            {/* <Dropdown>
                                 <Dropdown.Toggle className=" bg-transparent font-weight-bold" id="dropdown-basic">
                                     {lang=="ar"?"AR":"EN"}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={()=>switchLand(lang=="ar"?"en":"ar")} href="#">{lang=="ar"?"EN":"AR"}</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
                         </div>:<div className="col-4 d-flex justify-content-end align-items-center">
 
                             {iscompany && <Link to="/postajob" className="btn btn-sm  btn-secondary p-2 pr-3 "  style={{height:44, fontSize:"20px"}}>

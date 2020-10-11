@@ -185,7 +185,7 @@ class Talent extends CoreEngine {
                                                     <Link to={"/dev/profile/" + item._id} className="text-primary">
                                                         <h4 className="font-weight-bold deepgray ">{item.name}</h4>
                                                     </Link>
-                                                    <h5 className="mt-1 ">{item.type.name}</h5>
+                                                    <h5 className="mt-1 ">{item.type && item.type.name}</h5>
                                                     <h5 className=" text-primary font-weight-bold">
                                                         <FontAwesome name="map-marker" className="m-2" size="1x" />
                                                         {item.location}

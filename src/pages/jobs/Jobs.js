@@ -168,7 +168,7 @@ class Jobs extends CoreEngine {
                                         <div className="row">
                                             <div className="col-md-7 font-weight-bold">
                                                 <Link to={"/viewjobinfo/" + item._id} className="text-dark"><h4 className="mb-1 font-weight-bold ">{item.name}</h4></Link>
-                                                <h5 className="mb-2 jobdate">{item.company.name} • {this.renderDate(item.fromduration)} • ({item.salary ? item.salary : strings.no_salary})</h5>
+                                                <h5 className="mb-2 jobdate">{item.company && item.company.name} • {this.renderDate(item.fromduration)} • ({item.salary ? item.salary : strings.no_salary})</h5>
                                             </div>
                                             {item.jobtype && <div className="col-md-5 font-weight-bold text-right mobileleft">
                                                 {item.acceptremote && <div className="tag mb-3 btntag  text-secondary ">Remote</div>}

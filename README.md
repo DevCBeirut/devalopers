@@ -43,7 +43,7 @@ npm start
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
 To contribute to Devalopers Website, follow the steps described in this file:
 
-[Contributing link](https://github.com/DevCBeirut/devalopers/blob/master/CONTRIBUTING.md)
+[Contributing link](https://github.com/DevCBeirut/api.devalopers/blob/master/CONTRIBUTING.md)
 
 Alternatively, see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
@@ -51,7 +51,7 @@ Alternatively, see the GitHub documentation on [creating a pull request](https:/
 
 Thanks to the following people who have contributed to this project:
 
-[Contributors link](https://github.com/DevCBeirut/devalopers/blob/master/CONTRIBUTING.md)
+[Contributors link](https://github.com/DevCBeirut/api.devalopers/blob/master/CONTRIBUTORS.md)
 
 ## Contact
 

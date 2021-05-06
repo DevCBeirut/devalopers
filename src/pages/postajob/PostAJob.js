@@ -197,7 +197,7 @@ class PostAJob extends CoreEngine {
             let data = { ...this.state }
 
 
-            debugger
+            // debugger
             let skills = []
 
             let questionlist = []

@@ -142,7 +142,7 @@ class DevProfile extends CoreEngine {
     async callPage() {
         this.props.loadingAction(true);
 
-        debugger
+        // debugger
         const userid = this.props.match.params.id
         let response = await this.engine.getItem("user", "/info/" + userid);
 
@@ -230,7 +230,7 @@ class DevProfile extends CoreEngine {
         this.setState({
             loading: true
         })
-        debugger
+        // debugger
         try {
 
             const { removepic,first, last, linkfb, linklinking, linkgithub, rate, location, website, description, type, pictureprofilefile } = this.state
@@ -502,7 +502,7 @@ class DevProfile extends CoreEngine {
             this.props.loadingAction(true);
             const { cvfile } = this.state
             const formData = new FormData();
-            debugger
+            // debugger
             formData.append('cv', cvfile)
             formData.append('cvrealfilename', cvfile.name)
 

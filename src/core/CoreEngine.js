@@ -13,7 +13,6 @@ class CoreEngine extends Component {
     }
 
     goToScreen(screenname,redirect = ""){
-        console.log("redirect "+redirect)
         this.props.history.push(screenname,{
             redirect:redirect
         })
@@ -28,7 +27,7 @@ class CoreEngine extends Component {
             this.setState({ [stateName]: "" });
         }else
         if(event && event.target){
-            this.setState({ [stateName]: event.target.value });
+            this.setState({ [stateName]: event.target.value,error:'' });
         }else if(event && event.length){
             this.setState({ [stateName]: event });
         }else{

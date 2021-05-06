@@ -48,7 +48,7 @@ class Login extends CoreEngine {
             const hasCode = url.includes("?code=");
             const hasState = url.includes("&state=");
 
-            debugger
+            // debugger
             // If Github API returns the code parameter
             if (hasCode && !hasState) {
                 const newUrl = url.split("?code=");
@@ -92,7 +92,7 @@ class Login extends CoreEngine {
         var engine = new RequestEngine();
         const response = await engine.postFull(proxy_url,requestData);
         if (response && response.status === 200) {
-            debugger
+            // debugger
             let redirect = this.props.redirect.location
             if (response.data.success) {
 

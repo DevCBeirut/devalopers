@@ -32,7 +32,7 @@ class Signup extends CoreEngine {
 
     constructor(props) {
         super(props);
-        this.state = {
+        this.initialFormState = {
             name: "",
             showterms:false,
             email: "",
@@ -40,6 +40,9 @@ class Signup extends CoreEngine {
             password2: "",
             agree: false,
             loading: false
+        };
+        this.state = {
+            ...this.initialFormState
         };
         this.engine = new RequestEngine();
     }
@@ -77,6 +80,7 @@ class Signup extends CoreEngine {
             const response = await this.engine.postItem("company", this.state)
             if (response && response.status === 200) {
                 if (response.data.success) {
+                    this.setState(...this.initialFormState);
                     this.props.history.push('/login');
                     this.showSucessMessage("Sucess , Please login")
                 } else {
@@ -155,7 +159,6 @@ class Signup extends CoreEngine {
                                             <div class="separator">Or</div>
 
                                             <div className="row mt-3 mb-3 sm-media">
-
                                                 <div className="col-9 col-md-6 text-right mt-2 mx-auto">
                                                     <a variant="primary" onClick={this.requestProfile} className="btn btn-sm  btn text-white d-flex" style={{background:"#057ABA"}} >
                                                         <FontAwesome name="linkedin" /> <span style={{    position: "relative",

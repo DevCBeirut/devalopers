@@ -53,7 +53,7 @@ const lang = {
     label_location: "Location",
     label_description: "Description",
     no_description: "No Description",
-    label_rate: "Rate",
+    label_rate: "Rate in $/hr",
     label_facebook: "Facebook",
     label_linkedin: "Linkedin",
     label_github: "Github",

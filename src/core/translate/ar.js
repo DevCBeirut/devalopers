@@ -48,7 +48,7 @@ const lang = {
     label_location: "Location AR",
     label_description: "Description AR",
     no_description: "No Description AR",
-    label_rate: "Rate AR",
+    label_rate: "Rate in $/hr AR",
     label_facebook: "Facebook AR",
     label_linkedin: "Linkedin AR",
     label_github: "Github AR",

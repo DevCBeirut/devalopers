@@ -112,7 +112,13 @@ class Jobs extends CoreEngine {
         const { skills, data, searchkey, loading, count } = this.state
         let filteredData = data;
         if (searchkey.length > 0) {
-            filteredData = data.filter(i => i.company.name.toLowerCase().includes(searchkey) || i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey))
+            filteredData = data.filter(i => i.company.name.toLowerCase().includes(searchkey) 
+            || i.name.toLowerCase().includes(searchkey) 
+            || i.description.toLowerCase().includes(searchkey)
+            || i.location.toLowerCase().includes(searchkey)
+            || i.jobtype.toLowerCase().includes(searchkey)
+            || i.skills.find(skill=> skill.name.toLowerCase().includes(searchkey))
+            )
         }
 
         // Logic for displaying page numbers

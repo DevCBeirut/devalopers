@@ -21,6 +21,8 @@ import {connect} from "react-redux";
 import FontAwesome from "react-fontawesome";
 import {selectCountryList} from '../../core/countries';
 
+import './style.scss'
+
 const moment = extendMoment(originalMoment);
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -52,7 +54,8 @@ class SideSearch extends CoreEngine {
             isCountryCleared: true,
             country: '',
             talentsList: [],
-            selectedtalent:[]
+            selectedtalent:[],
+            matchesAllSkillsError:''
         }
         this.engine = new RequestEngine();
     }
@@ -153,7 +156,8 @@ class SideSearch extends CoreEngine {
         let newskillslist=skillslist.filter(i=>i.value!==event.value)
         this.setState({
             searchbyskill:searchbyskill,
-            skillslist:newskillslist
+            skillslist:newskillslist,
+            matchesAllSkillsError:''
         },()=>this.triggerSearch())
 
     };
@@ -247,7 +251,7 @@ class SideSearch extends CoreEngine {
         const {isOpen,value,fulltime,parttime,
             projectbasis,skill,skillslist,searchbyskill,isremote,minsalary,matchesAllSkills,excludeNoSalary,isCountryCleared,
             maxsalary,istalent,
-            talentsList} = this.state
+            talentsList,matchesAllSkillsError} = this.state
         return (
             <div className="sidesearch col-md-3 bg-white">
                 <AvForm className="form-horizontal" id="TypeValidation">
@@ -277,7 +281,14 @@ class SideSearch extends CoreEngine {
                     <div className="align-items-center d-flex justify-content-between toggle-btn mb-2">
                         <span>Match all skills</span>
                         <label className="switch">
-                            <Input type="checkbox" checked={matchesAllSkills} onChange={matchesAllSkills => this.setState({ matchesAllSkills: matchesAllSkills.target.checked },()=>this.triggerSearch())} />
+                            <Input type="checkbox" checked={matchesAllSkills} onChange={matchesAllSkills => {
+                                if(searchbyskill.length > 0){
+                                    this.setState({ matchesAllSkills: matchesAllSkills.target.checked },()=>this.triggerSearch())
+                                }else{
+                                    this.setState({ matchesAllSkillsError: "No skill is selected" })
+                                }
+
+                            } } />
                             <span className="slider round"></span>
                         </label>
 
@@ -300,6 +311,9 @@ class SideSearch extends CoreEngine {
                         return <Button key={index} onClick={() => this.removeSkill(item)} className="btntag searchtag btn-secondary bg-white">{item.label}      <FontAwesome name="close"    size="1x" />
                         </Button>;
                         }
+                        )}
+                        {matchesAllSkillsError.length> 0 && (
+                        <p className="error">{matchesAllSkillsError}</p>
                         )}
                     </div>
 

@@ -32,8 +32,7 @@ class CoreEngine extends Component {
         }else if(event && event.length){
             this.setState({ [stateName]: event });
         }else{  
-            console.log("event.value ",event.value)
-            this.setState({ [stateName]: [] }); // select input
+            this.setState({ [stateName]: event.value || [] }); // select input
         }
     };
 

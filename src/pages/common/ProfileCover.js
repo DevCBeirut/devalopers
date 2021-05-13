@@ -29,7 +29,7 @@ class ProfileCover extends CoreEngine {
 
     handleValidSubmit = async () => {
         this.props.loadingAction(true);
-        debugger
+        // debugger
         const iscompany = this.props.iscompany
         try {
             const {pictureprofilefile} =this.state

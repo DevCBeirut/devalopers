@@ -52,7 +52,7 @@ class DevHome extends CoreEngine {
 
         if (response && response.status === 200) {
             const data = response.data.data;
-            debugger
+            
             this.setState({
                 loading: false,
                 info: data.info,

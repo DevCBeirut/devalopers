@@ -177,7 +177,7 @@ class Signupdev extends CoreEngine {
                                             <FormRow label="First Name" name="first" data={first} changeInput={this.changeInput.bind(this)} />
                                             <FormRow label="Last Name" name="last" data={last} changeInput={this.changeInput.bind(this)} />
                                             <FormRow label="Email" type="email" name="email" data={email} changeInput={this.changeInput.bind(this)} />
-                                           <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+                                           <OverlayTrigger trigger="hover" placement="bottom" overlay={popover}>
                                                 <div>
                                                     <FormRow label="Password" type="password" name="password" data={password} changeInput={this.changeInput.bind(this)} />
                                                 </div>

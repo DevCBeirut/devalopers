@@ -252,6 +252,7 @@ class SideSearch extends CoreEngine {
             projectbasis,skill,skillslist,searchbyskill,isremote,minsalary,matchesAllSkills,excludeNoSalary,isCountryCleared,
             maxsalary,istalent,
             talentsList,matchesAllSkillsError} = this.state
+            console.log("searchbyskill ",searchbyskill)
         return (
             <div className="sidesearch col-md-3 bg-white">
                 <AvForm className="form-horizontal" id="TypeValidation">

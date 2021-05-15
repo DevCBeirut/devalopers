@@ -120,6 +120,8 @@ class Talent extends CoreEngine {
 
         const { data, skills, searchkey, loading, count } = this.state;
         let filteredData = data;
+        console.log("data ",data)
+        console.log("filteredData ",filteredData)
         if (searchkey.length > 0) {
             filteredData = data.filter(i => i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey))
         }
@@ -197,7 +199,7 @@ class Talent extends CoreEngine {
                                                     </div>
 
                                                     <hr />
-                                                    <Link to={"/dev/profile/" + item._id} style={{ color: "#4A4A4A" }}>
+                                                    <Link to={"/dev/profile/" + item._id} style={{ color: "#4A4A4A" }} className="profile-link" >
                                                         <h6 className="mt-3 mb-3">
                                                             View Profile
                                                         </h6>

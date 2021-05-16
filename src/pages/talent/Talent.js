@@ -120,8 +120,7 @@ class Talent extends CoreEngine {
 
         const { data, skills, searchkey, loading, count } = this.state;
         let filteredData = data;
-        console.log("data ",data)
-        console.log("filteredData ",filteredData)
+  
         if (searchkey.length > 0) {
             filteredData = data.filter(i => i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey))
         }

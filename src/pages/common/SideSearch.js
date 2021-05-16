@@ -231,7 +231,7 @@ class SideSearch extends CoreEngine {
         })
     }
     submitDate = () => {
-        this.setState({ lastValue: this.state.value })
+        this.setState({ lastValue: this.state.value ,isOpen:false})
         this.triggerSearch();
     }
 
@@ -252,7 +252,6 @@ class SideSearch extends CoreEngine {
             projectbasis,skill,skillslist,searchbyskill,isremote,minsalary,matchesAllSkills,excludeNoSalary,isCountryCleared,
             maxsalary,istalent,
             talentsList,matchesAllSkillsError} = this.state
-            console.log("searchbyskill ",searchbyskill)
         return (
             <div className="sidesearch col-md-3 bg-white">
                 <AvForm className="form-horizontal" id="TypeValidation">
@@ -375,7 +374,7 @@ class SideSearch extends CoreEngine {
                                 singleDateRange={true}
                             />
 
-                            <button class="btn btn-sm mr-2" onClick={this.cancelDate}>Cancel</button>
+                            <button class="btn btn-sm mr-2" onClick={this.cancelDate}>Close</button>
                             <button class="btn btn-sm btn-secondary" onClick={this.submitDate}>Search</button>
                         </div>
                     )}

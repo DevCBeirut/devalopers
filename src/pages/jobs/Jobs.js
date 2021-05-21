@@ -111,7 +111,6 @@ class Jobs extends CoreEngine {
 
         const { skills, data, searchkey, loading, count } = this.state
         let filteredData = data;
-        console.log(data)
         if (searchkey.length > 0) {
             filteredData = data.filter(i => i.company.name.toLowerCase().includes(searchkey) 
             || i.name.toLowerCase().includes(searchkey) 

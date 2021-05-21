@@ -36,7 +36,7 @@ class ForgotPassword extends CoreEngine {
 
                 if (response.data.success) {
 
-                    this.showSucessMessage("Please check your email address")
+                    this.showSucessMessage("Please check your email address. Kindly check your inbox or your Junk.")
                 } else {
                     this.showErrorMessage(response.data.message)
                 }

@@ -99,7 +99,8 @@ class Jobs extends CoreEngine {
                 loading: false,
                 data: response.data.data,
                 count:1,
-                page:0
+                page:0,
+                jobsCount:response.data.data.length
             }
             );
         }
@@ -109,7 +110,7 @@ class Jobs extends CoreEngine {
 
     render() {
 
-        const { skills, data, searchkey, loading, count } = this.state
+        const { skills, data, searchkey, loading, count,jobsCount } = this.state
         let filteredData = data;
         if (searchkey.length > 0) {
             filteredData = data.filter(i => i.company.name.toLowerCase().includes(searchkey) 
@@ -150,7 +151,7 @@ class Jobs extends CoreEngine {
                         <div className="row">
                             <SideSearch skills={skills} searchAction={this.searchAction.bind(this)} />
                             <div className="jobs-filter col-md-9">
-                                <h2 className="mb-0 font-weight-bold">Jobs</h2>
+                                <h2 className="mb-0 font-weight-bold">Jobs ({jobsCount})</h2>
                                 <div className="row mb-4">
                                     <div className="col-lg-4" style={{ height: 58 }}>
                                         <FormControl maxlength="250" type="text" value={searchkey} placeholder="&#xF002; Search by Keyword" onChange={searchkey => {

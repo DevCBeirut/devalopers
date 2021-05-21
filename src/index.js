@@ -49,7 +49,7 @@ const history = createBrowserHistory();
 
 const App = () => (
     <Provider store={configureStore}>
-        <ReactNotification />
+        <ReactNotification className="notification-popup" />
     <Router history={history}>
         <Switch>
             <Route path="/jobs/?:search">

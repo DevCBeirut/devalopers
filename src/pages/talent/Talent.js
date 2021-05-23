@@ -121,7 +121,7 @@ class Talent extends CoreEngine {
         const { data, skills, searchkey, loading, count } = this.state;
         let filteredData = data;
         if (searchkey.length > 0) {
-            filteredData = data.filter(i => i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey))
+            filteredData = data.filter(i => i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey) || i.location.toLowerCase().includes(searchkey))
         }
 
         // Logic for displaying page numbers

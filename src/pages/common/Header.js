@@ -191,9 +191,10 @@ function Header(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                             <Dropdown>
-                                <Dropdown.Toggle className=" bg-transparent font-weight-bold" id="dropdown-basic">
+                                {/* ALI J.: temp hidden till we get the final localization */}
+                                {/* <Dropdown.Toggle className=" bg-transparent font-weight-bold" id="dropdown-basic">
                                     {lang=="ar"?"AR":"EN"}
-                                </Dropdown.Toggle>
+                                </Dropdown.Toggle> */}
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={()=>switchLand(lang=="ar"?"en":"ar")} href="#">{lang=="ar"?"EN":"AR"}</Dropdown.Item>
                                 </Dropdown.Menu>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment'
 import { OrbitSpinner } from 'react-epic-spinners'
 import { store } from 'react-notifications-component'
 import {Memory} from "./Memory";
@@ -13,7 +14,6 @@ class CoreEngine extends Component {
     }
 
     goToScreen(screenname,redirect = ""){
-        console.log("redirect "+redirect)
         this.props.history.push(screenname,{
             redirect:redirect
         })
@@ -28,11 +28,11 @@ class CoreEngine extends Component {
             this.setState({ [stateName]: "" });
         }else
         if(event && event.target){
-            this.setState({ [stateName]: event.target.value });
+            this.setState({ [stateName]: event.target.value,error:'' });
         }else if(event && event.length){
             this.setState({ [stateName]: event });
-        }else{
-            this.setState({ [stateName]: event.value }); // select input
+        }else{  
+            this.setState({ [stateName]: event.value || [] }); // select input
         }
     };
 
@@ -62,8 +62,9 @@ class CoreEngine extends Component {
     };
     createSelectValueYear(addpresent=true){
         let data = [];
-
-        for (let i = 1960;i<=2020;i++){
+        const start = moment().subtract(80,'years').format('YYYY');
+        const end   = moment().format("YYYY");
+        for (let i = start;i<=end;i++){
             data.push({ value: i, label: i })
         }
         if(addpresent){

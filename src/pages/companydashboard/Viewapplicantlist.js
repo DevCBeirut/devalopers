@@ -55,10 +55,10 @@ class Viewapplicantlist extends CoreEngine {
 
             let data = response.data.data
             if(filterjobid){
-                debugger
+                // debugger
                 data = data.filter(i=>i.job && i.job.id==filterjobid)
 
-                debugger
+                // debugger
                 if(data && data[0] &&  data[0].job){
                     this.setState({
                         filterjobname:data[0].job.name

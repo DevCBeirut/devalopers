@@ -177,7 +177,7 @@ class Signupdev extends CoreEngine {
                                             <FormRow label="First Name" name="first" data={first} changeInput={this.changeInput.bind(this)} />
                                             <FormRow label="Last Name" name="last" data={last} changeInput={this.changeInput.bind(this)} />
                                             <FormRow label="Email" type="email" name="email" data={email} changeInput={this.changeInput.bind(this)} />
-                                           <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+                                           <OverlayTrigger trigger="hover" placement="bottom" overlay={popover}>
                                                 <div>
                                                     <FormRow label="Password" type="password" name="password" data={password} changeInput={this.changeInput.bind(this)} />
                                                 </div>
@@ -185,7 +185,7 @@ class Signupdev extends CoreEngine {
                                             <FormRow label="Confirm Password" type="password" name="password2" data={password2} changeInput={this.changeInput.bind(this)} />
                                             <div className="row checkbox-row d-flex mt-1" style={{ paddingLeft: 15, fontSize: 14 }}>
                                                 <Input type="checkbox" id="checkbox" value={agree} onChange={agree => {
-                                                    this.setState({ agree: agree.target.checked })
+                                                    this.setState({ agree: agree.target.checked ,error:''})
                                                 }} /><label for="checkbox"></label>   {strings.agree_to} <a onClick={()=>{
                                                 this.setState({showterms:true})
                                             }}  className="nav-link text-primary pt-0 pl-1 font-weight-bold pointer" > {strings.terms_and_conditions} </a>

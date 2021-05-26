@@ -4,3 +4,9 @@
 .notification-popup{
     z-index: 99999999;
 }
+
+.landing-link{
+    &:hover{
+        text-decoration: none;
+    }
+}

@@ -267,6 +267,22 @@ class SideSearch extends CoreEngine {
                         <FormRow required={false} labelStyle={{fontSize:16}} row={true} label="Project Basis" type="checkbox" name="projectbasis" data={projectbasis}   changeInput={this.changeInputCheckbox.bind(this)}   />
                     </ul></>}
 
+                    {!istalent && (
+                        <>
+                            <h6 className="mb-3 font-weight-bold mt-4">Options</h6>
+                            <div className="align-items-center d-flex justify-content-between toggle-btn remote-section">
+                                <span>Remote Only</span>
+                                <label className="switch">
+                                    <Input type="checkbox" checked={isremote}   onChange={isremote => {
+                                        this.setState({ isremote:isremote.target.checked },()=>this.triggerSearch()
+                                        )}} />
+
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                        </>
+                    )}
+
                     {istalent && <><h6 className="mb-3 font-weight-bold ">Talent Type</h6>
                     <ul className="jobtype">
                         {
@@ -319,7 +335,7 @@ class SideSearch extends CoreEngine {
 
 
                     {!istalent && <>
-                        <h6 className="mt-4 mb-3 font-weight-bold ">Salary Range</h6>
+                        <h6 className="mt-4 mb-3 font-weight-bold ">Monthly salary Range</h6>
                         <div className="align-items-center d-flex justify-content-between toggle-btn mb-2">
                             <span>Exclude No Salary</span>
                             <label className="switch">
@@ -379,21 +395,7 @@ class SideSearch extends CoreEngine {
                         </div>
                     )}
 
-                    {!istalent && (
-                        <>
-                            <h6 className="mb-3 font-weight-bold mt-4">Options</h6>
-                            <div className="align-items-center d-flex justify-content-between toggle-btn">
-                                <span>Remote Only</span>
-                                <label className="switch">
-                                    <Input type="checkbox" checked={isremote}   onChange={isremote => {
-                                        this.setState({ isremote:isremote.target.checked },()=>this.triggerSearch()
-                                        )}} />
-
-                                    <span className="slider round"></span>
-                                </label>
-                            </div>
-                        </>
-                    )}
+                   
                 </AvForm>
             </div>
         );

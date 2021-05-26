@@ -42,6 +42,11 @@ class Landing extends Component {
             searchkey: "",
         }
         this.engine = new RequestEngine();
+        this.scrollToCompaniesRef = React.createRef()
+    }
+
+    scrollToBottom = () => {
+      this.scrollToCompaniesRef.current.scrollIntoView({ behavior: 'smooth' })
     }
 
     componentWillMount() {
@@ -62,6 +67,8 @@ class Landing extends Component {
     componentDidMount() {
         this.callPage()
     }
+
+
     async callPage() {
         this.props.loadingAction(true);
         const response = await this.engine.getItem("home", "/frontend");
@@ -143,9 +150,43 @@ class Landing extends Component {
                 </div>
 
 
-                <Statistics statistics={statistics} />
+
+                <div className="py-1 bg-primary ">
+                    <div className="container">
+                        <div id="mostsearchedskillssect" className="row">
+                            <div className="text-center col-md-4 mx-auto text-light pt-5">
+                                <h3 className="">Most Searched Skills</h3>
+                            </div>
+                        </div>
+                        <div className="row align-content-center text-white paddingmobile">
+
+                            {skilllist.map((item, index) => {
+                                return (<div key={index} className=" col-md-3 mx-auto mostsearchd">
+                                    <li><Link to={"talentdirectory?" + item.name} className="text-white pointer"><div className="skillstyle">{item.name}</div></Link></li>
+                                </div>)
+                            })}
+
+                            <div className="text-center col-md-12 mx-auto pb-4">
+
+                                <Link to="/allskills" style={{ border: "2px solid white" }} className="btn btn-sm btnpostajob btn-secondary bg-transparent  p-2 m-2 pr-5 pl-5 font-weight-bold " >
+                                    View all
+                                </Link>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div id="mostactivecompaniessect2"></div>
+                </div>
+
+                <Statistics scrollToBottom={this.scrollToBottom} statistics={statistics} />
+
                 <WhyUs />
+
                 <Hire />
+
                 <EasyToStart />
 
 
@@ -178,7 +219,8 @@ class Landing extends Component {
                     </div>
                     <div id="mostactivecompaniessect2"></div>
                 </div>
-                <MostActive companylist={companylist} />
+
+                <MostActive refProp={this.scrollToCompaniesRef} companylist={companylist} />
 
                 <Testimonials testimonials={testimonials} />
                 <div className="py-1  ">

@@ -25,6 +25,10 @@ class Talent extends CoreEngine {
     constructor(props) {
         super(props);
         this.state = {
+            filterOptions:{
+                page:1,
+                limit:10
+            },
             data: [],
             skills: [],
             searchkey: "",
@@ -34,6 +38,7 @@ class Talent extends CoreEngine {
         }
         this.engine = new RequestEngine();
     }
+
     componentDidMount() {
         let key = this.props.history.location.search
         if (key) {
@@ -50,8 +55,9 @@ class Talent extends CoreEngine {
 
     }
     async callPage(page) {
+        const {filterOptions} = this.state;
         this.props.loadingAction(true);
-        const response = await this.engine.getItem("dev", "/list/" + page);
+        const response = await this.engine.getFilteredUsers(filterOptions);
 
         this.setState({
             loading: true,

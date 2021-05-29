@@ -127,6 +127,13 @@ class SideSearch extends CoreEngine {
         })
     }
 
+    onResetDatepicker = () => {
+        this.setState({
+            value:moment.range(moment().startOf('month'), endOfMonth.clone()),
+            lastValue:moment.range(moment().startOf('month'), endOfMonth.clone())
+        })
+    }
+
     changeInputCheckbox = (event, stateName) => {
             this.setState({ [stateName]: event.target.checked },()=>this.triggerSearch());
     };
@@ -391,6 +398,7 @@ class SideSearch extends CoreEngine {
                             />
 
                             <button class="btn btn-sm mr-2" onClick={this.cancelDate}>Close</button>
+                            <button class="btn btn-sm mr-2" onClick={this.onResetDatepicker}>Reset</button>
                             <button class="btn btn-sm btn-secondary" onClick={this.submitDate}>Search</button>
                         </div>
                     )}

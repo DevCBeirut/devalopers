@@ -306,7 +306,6 @@ class DevProfile extends CoreEngine {
                 this.callPage()
             }
         } catch (e) {
-            console.log(e);
             this.showErrorMessage("error please try again")
         }
 
@@ -917,7 +916,6 @@ class DevProfile extends CoreEngine {
                                     </div>
                                 </div>
                                 <AvForm onValidSubmit={() => this.handleValidSubmitSkills()} className="form-horizontal liteinput" id="TypeValidation">
-                                            {console.log('skills ',skills)}
                                     <div className="bg-white mb-3 borderwrap">
                                         {skills.length === 0 && !editskills &&
                                             <h5 className="mb-0">No Skills yet</h5>}

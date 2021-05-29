@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import profile from "../../../assets/images/profile.png";
 import { Link } from "react-router-dom";
 
 
-function MostActive({ companylist }) {
+const  MostActive = (({ companylist,refProp }) => {
     return (
-        <div className="container most-active">
+        <div id="most-active-companies" className="container most-active" ref={refProp} >
             <div id="mostactivecompaniessect" className="row">
                 <div className="text-center col-md-6 mx-auto mb-3">
                     <h2 className="font-weight-bold deepgray ">Most Active Companies</h2>
@@ -37,6 +37,6 @@ function MostActive({ companylist }) {
             <div id="testimonialssect2"></div>
         </div>
     );
-}
+})
 
 export default MostActive;

@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import iconBriefcase from "../../../assets/images/status/icon-briefcase.png"
 import iconBuilding from "../../../assets/images/status/icon-building.png"
 import iconPeople from "../../../assets/images/status/icon-people.png"
 
 
-function Statistics({ statistics }) {
+function Statistics({ statistics ,scrollToBottom}) {
     return (
         <div className="py--">
 
@@ -18,8 +19,10 @@ function Statistics({ statistics }) {
                                     <img src={iconBriefcase} />
                                 </div>
                                 <div className="col-10 text-left">
-                                    <h3 className="text-white">{statistics && statistics.jobs}+</h3>
-                                    <h5 className="text-white ">Jobs Posted So Far</h5>
+                                    <Link to="/jobs" className="landing-link" >
+                                        <h3 className="text-white">{statistics && statistics.jobs}+</h3>
+                                        <h5 className="text-white ">Jobs Posted So Far</h5>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -29,8 +32,10 @@ function Statistics({ statistics }) {
                                     <img src={iconBuilding} />
                                 </div>
                                 <div className="col-10 text-left">
-                                    <h3 className="text-white">{statistics && statistics.companies}+</h3>
-                                    <h5 className="text-white ">Companies</h5>
+                                    <div onClick={scrollToBottom}  className="landing-link">
+                                        <h3 className="text-white">{statistics && statistics.companies}+</h3>
+                                        <h5 className="text-white ">Companies</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -40,8 +45,10 @@ function Statistics({ statistics }) {
                                     <img src={iconPeople} />
                                 </div>
                                 <div className="col-10 text-left">
+                                <Link to="/talentdirectory" className="landing-link">
                                     <h3 className="text-white">{statistics && statistics.dev}+</h3>
                                     <h5 className="text-white ">Tech Professionals</h5>
+                                 </Link>
                                 </div>
                             </div>
                         </div>

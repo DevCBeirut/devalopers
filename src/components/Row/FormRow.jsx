@@ -82,7 +82,8 @@ function FormRow({
 
 
 
-    let output = <><Label for={name} sm={formW}>{label} {required && <span style={{color:"red"}}>*</span>}</Label>
+    let output = <>
+    <Label for={name} sm={formW}>{label} {required && <span style={{color:"red"}}>*</span>}</Label>
         <Col sm={formW}>
             <FormGroup style={isPassword() ? {position: "relative"} : {}}>
                 <AvField
@@ -98,7 +99,8 @@ function FormRow({
                         changeInput && changeInput(e, name)
                     }
                 />
-                {name === "password" && <FontAwesome name="eye" size="1x" onClick={onEyeClick} style={{
+           
+                {(name === "password" || name === "newpass" || name ==="newpass2")  && <FontAwesome name="eye" size="1x" onClick={onEyeClick} style={{
                     position: "absolute",
                     right: 0,
                     top: 0,

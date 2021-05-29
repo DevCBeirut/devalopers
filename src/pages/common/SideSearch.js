@@ -388,7 +388,7 @@ class SideSearch extends CoreEngine {
                     )}
 
                     {isOpen && (
-                        <div className="bg-white position-absolute borderwrap z-1 pb-3">
+                        <div className="bg-white position-absolute borderwrap z-1 pb-3 datepicker-wrapper">
                             <DateRangePicker
                                 value={value}
                                 onSelect={(a,b)=>{

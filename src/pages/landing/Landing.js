@@ -165,18 +165,12 @@ class Landing extends Component {
                                     <li><Link to={"talentdirectory?" + item.name} className="text-white pointer"><div className="skillstyle">{item.name}</div></Link></li>
                                 </div>)
                             })}
-
                             <div className="text-center col-md-12 mx-auto pb-4">
-
                                 <Link to="/allskills" style={{ border: "2px solid white" }} className="btn btn-sm btnpostajob btn-secondary bg-transparent  p-2 m-2 pr-5 pl-5 font-weight-bold " >
                                     View all
                                 </Link>
                             </div>
-
-
                         </div>
-
-
                     </div>
                     <div id="mostactivecompaniessect2"></div>
                 </div>

@@ -180,10 +180,9 @@ class Login extends CoreEngine {
 
 
     requestProfile = () => {
+        Utilites.setCookie("regtype","login");
         var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${Constants.LINK_REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${Constants.LINK_REACT_APP_REDICRECT_URL}`
-
         window.location = oauthUrl;
-
     };
 
     showInlineErrorMessage = error => this.setState({ error })

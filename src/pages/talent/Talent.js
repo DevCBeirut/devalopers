@@ -54,10 +54,31 @@ class Talent extends CoreEngine {
 
 
     }
+
+    // Ali J.: temp until backend is fixed
+    // async callPage(page) {
+    //     const {filterOptions} = this.state;
+    //     this.props.loadingAction(true);
+    //     const response = await this.engine.getFilteredUsers(filterOptions);
+    //     this.setState({
+    //         loading: true,
+    //     })
+
+    //     if (response && response.status === 200) {
+    //         this.setState({
+    //             loading: false,
+    //             data: response.data.data.data,
+    //             count: response.data.data.count,
+    //             page: page,
+    //         }
+    //         );
+    //     }
+    //     this.props.loadingAction(false);
+    // }
+
     async callPage(page) {
-        const {filterOptions} = this.state;
         this.props.loadingAction(true);
-        const response = await this.engine.getFilteredUsers(filterOptions);
+        const response = await this.engine.getItem("dev", "/list/" + page);
 
         this.setState({
             loading: true,
@@ -74,6 +95,8 @@ class Talent extends CoreEngine {
         }
         this.props.loadingAction(false);
     }
+
+    
     async searchAction(startdate, enddate, skills, fulltime, parttime, projectbasis, isremote, minsalary, maxsalary, matchesAllSkills, excludeNoSalary, country, selectedtalent = []
     ) {
 

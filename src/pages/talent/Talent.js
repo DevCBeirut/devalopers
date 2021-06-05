@@ -18,6 +18,7 @@ import { Link, withRouter } from "react-router-dom";
 import FontAwesome from "react-fontawesome";
 import profile from "../../assets/images/profile.png";
 import { Memory } from "../../core/Memory";
+import _ from 'lodash';
 
 class Talent extends CoreEngine {
 
@@ -27,14 +28,15 @@ class Talent extends CoreEngine {
         this.state = {
             filterOptions:{
                 page:1,
-                limit:10
+                limit:6
             },
             data: [],
             skills: [],
             searchkey: "",
             loading: false,
             page: 0,
-            count: 0
+            count: 0,
+            totalCount:0
         }
         this.engine = new RequestEngine();
     }
@@ -49,17 +51,60 @@ class Talent extends CoreEngine {
             this.searchAction(null, null, skills)
         } else {
             const { page } = this.state
-            this.callPage(page)
+            this.getSkills()
+            this.callPage()
         }
 
 
     }
 
+    getSkills = async () => {
+        try {
+            this.props.loadingAction(true);
+            const response = await this.engine.getItem("skills");
+            this.setState({
+                loading: true,
+            })
+            if(response && response.status === 200){
+                let skills = response.data.data
+                // skills = _.groupBy(skills, "type")
+                this.setState({
+                    loading: false,
+                    skills
+                });
+            }
+            this.props.loadingAction(false);
+        } catch (error) {
+            
+        }
+    }
+
     // Ali J.: temp until backend is fixed
+    async callPage() {
+        const {filterOptions} = this.state;
+        this.props.loadingAction(true);
+        const response = await this.engine.getFilteredUsers(filterOptions);
+        this.setState({
+            loading: true,
+        })
+
+        if (response && response.status === 200) {
+            this.setState({
+                loading: false,
+                data: response.data.data.results,
+                count: response.data.data.totalPages,
+                totalCount: response.data.data.results.length,
+                // page: page,
+            }
+            );
+        }
+        this.props.loadingAction(false);
+    }
+
     // async callPage(page) {
-    //     const {filterOptions} = this.state;
     //     this.props.loadingAction(true);
-    //     const response = await this.engine.getFilteredUsers(filterOptions);
+    //     const response = await this.engine.getItem("dev", "/list/" + page);
+
     //     this.setState({
     //         loading: true,
     //     })
@@ -75,26 +120,6 @@ class Talent extends CoreEngine {
     //     }
     //     this.props.loadingAction(false);
     // }
-
-    async callPage(page) {
-        this.props.loadingAction(true);
-        const response = await this.engine.getItem("dev", "/list/" + page);
-
-        this.setState({
-            loading: true,
-        })
-
-        if (response && response.status === 200) {
-            this.setState({
-                loading: false,
-                data: response.data.data.data,
-                count: response.data.data.count,
-                page: page,
-            }
-            );
-        }
-        this.props.loadingAction(false);
-    }
 
     
     async searchAction(startdate, enddate, skills, fulltime, parttime, projectbasis, isremote, minsalary, maxsalary, matchesAllSkills, excludeNoSalary, country, selectedtalent = []
@@ -129,11 +154,11 @@ class Talent extends CoreEngine {
 
         }
         const response = await this.engine.postItem("job", data, "search");
-
         if (response && response.status === 200) {
             this.setState({
                 loading: false,
                 data: response.data.data,
+                totalCount:response.data.data.length,
                     count:1,
                     page:0
             }
@@ -143,17 +168,26 @@ class Talent extends CoreEngine {
     }
 
 
+    onPageClick = (page) => ()=>{
+        console.log("page => ",page)
+        this.setState(prevState=> ({
+            ...prevState,
+            filterOptions:{
+                ...prevState.filterOptions,
+                page
+            }
+        }), this.callPage)
+    }
 
 
     render() {
 
-        const { data, skills, searchkey, loading, count } = this.state;
+        const { data, skills, searchkey, loading, count,totalCount } = this.state;
         let filteredData = data;
   
         if (searchkey.length > 0) {
             filteredData = data.filter(i => i.name.toLowerCase().includes(searchkey) || i.description.toLowerCase().includes(searchkey))
         }
-
         // Logic for displaying page numbers
         const pageNumbers = [];
         for (let i = 1; i <= count; i++) {
@@ -163,7 +197,7 @@ class Talent extends CoreEngine {
             return (
                 <PaginationItem key={index}>
                     <PaginationLink
-                        onClick={() => this.callPage(number)}
+                        onClick={this.onPageClick(number)}
                     >
                         {number}
 
@@ -171,7 +205,6 @@ class Talent extends CoreEngine {
                 </PaginationItem>
             );
         });
-
         return (
             <>
                 <Header />
@@ -182,7 +215,7 @@ class Talent extends CoreEngine {
                             <SideSearch skills={skills} istalent={true} searchAction={this.searchAction.bind(this)} />
 
                             <div className="talents-filter col-md-9">
-                                <h2 className="mb-0 font-weight-bold">Talent</h2>
+                                <h2 className="mb-0 font-weight-bold">Talent ({totalCount}) </h2>
                                 <div className="row">
                                     <div className="col-lg-4" style={{ height: 58 }}>
                                         <FormControl maxlength="250" type="text" value={searchkey} placeholder="&#xF002; Search by Keyword" onChange={searchkey => {
@@ -238,7 +271,6 @@ class Talent extends CoreEngine {
                                         </div>
                                     })}
                                 </div>
-
 
                                 {filteredData.length > 0 && <nav aria-label="Page navigation example">
                                     <Pagination

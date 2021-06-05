@@ -211,7 +211,6 @@ import {Memory} from "./Memory";
 
      async getFilteredUsers(options) {
         const link = "/api/user/queryusers";
-        console.log("options ",options)
         return await this.apiEngine.post(link, {options})
     }
 

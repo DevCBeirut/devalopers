@@ -169,7 +169,6 @@ class Talent extends CoreEngine {
 
 
     onPageClick = (page) => ()=>{
-        console.log("page => ",page)
         this.setState(prevState=> ({
             ...prevState,
             filterOptions:{

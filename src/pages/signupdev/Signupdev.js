@@ -80,8 +80,8 @@ class Signupdev extends CoreEngine {
             return
         }
         if (!Utilites.isStrong(password)) {
-          //  this.showInlineErrorMessage("Please put a Strong Password")
-         //   return
+           this.showInlineErrorMessage("Please put a Strong Password")
+           return
         }
         this.setState({
             loading: true

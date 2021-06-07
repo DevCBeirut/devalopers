@@ -125,7 +125,7 @@ class CoreEngine extends Component {
             animationIn: ["animated", "fadeIn"],
             animationOut: ["animated", "fadeOut"],
             dismiss: {
-                duration: 90000,
+                duration: 3000,
                 onScreen: true
             }
         });

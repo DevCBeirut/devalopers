@@ -49,6 +49,7 @@
     "react-window": "^1.8.5",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "^3.8.2",
     "webpack": "4.41.5"
   },

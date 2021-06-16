@@ -18,7 +18,7 @@ const lang = {
     information: 'Information AR',
     about: 'About AR',
     get_in_touch: 'Get in touch AR',
-    copyright_2020: '© Copyright 2020 AR',
+    copyright_2020: '© Copyright ' + parseInt(new Date().getYear() + 1900) + ' AR',
     phone: '+961 3 067 205 AR',
     email: 'info@devalopers.com AR',
     tech_focused_platform: 'Tech-Focused AR',

@@ -23,7 +23,7 @@ const lang = {
     hire_talents: 'Hire Talents',
     most_searched_skills: 'Most searched skills',
     most_active_companies: 'Most active companies',
-    copyright_2020: '© Copyright 2020',
+    copyright_2020: '© Copyright ' + parseInt(new Date().getYear() + 1900),
     phone: '+961 3 067 205',
     email: 'info@devalopers.com',
     tech_focused_platform: 'Tech-Focused',

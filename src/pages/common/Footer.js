@@ -56,7 +56,7 @@ function Footer(props) {
 
                         <div className="mobilecenter">
                             <a href="https://www.instagram.com/devalopers"><FontAwesome name="instagram" className="m-2 social" size="2x"/></a>
-                            <a href='https://www.facebook.com/salah.awad.lb'><FontAwesome name="facebook-square" className="m-2 social" size="2x"/></a>
+                            <a href='https://www.facebook.com/devalopers.fb/'><FontAwesome name="facebook-square" className="m-2 social" size="2x"/></a>
                             <a href="https://www.linkedin.com/devalopers"><FontAwesome name="linkedin" className="m-2 social" size="2x"/></a>
                             <a href="https://www.twitter.com/devalopers"><FontAwesome name="twitter" className="m-2 social" size="2x"/></a>
                         </div>

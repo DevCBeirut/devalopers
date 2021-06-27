@@ -26,7 +26,7 @@ class PostAJob extends CoreEngine {
             skillslist: [],
             skills: [],
             questionlist: [],
-            educationlist:this.createSelectValue(["Bacheloar Degree","Brevet","Eng.","Student"]),
+            educationlist:this.createSelectValue(["Bachelor Degree","Brevet","Eng.","Student"]),
             yearsexp: "",
             _id: "",
             whoview: "",

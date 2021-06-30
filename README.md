@@ -52,7 +52,7 @@ Make sure you have installed all of the following prerequisites on your developm
 
 * Copy `.env.example` and rename it to `.env` 
 
-## Installing Devalopers Fronyend
+## Installing Devalopers Frontend
 
 To install Devalopers Frontend, follow these steps:
 ### Installation <a name="installation"></a>

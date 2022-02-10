@@ -29,7 +29,7 @@
     "jquery": "^3.5.1",
     "lodash": "^4.17.21",
     "moment-range": "^4.0.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "rc-slider": "^9.2.4",
     "rc-tooltip": "^4.0.3",
     "react": "^16.13.1",

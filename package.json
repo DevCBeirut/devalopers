@@ -22,7 +22,7 @@
   "license": "bsd-3-clause-clear",
   "dependencies": {
     "availity-reactstrap-validation": "^2.6.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.5.0",
     "dark-mode-toggle": "^0.7.2",
     "dotenv": "^8.2.0",
